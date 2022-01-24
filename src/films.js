@@ -1,10 +1,13 @@
 // Exercise 1: Get the array of all directors.
-function getAllDirectors(array) {
-  let result =  ???;
-  console.log("EXERCICE 1 ->", result);
-  return result;
+function getAllDirectors(movies) { 
+  const directors = movies.map((movie) => { 
+    let result = movie.director
+    return result;
+  });
+  console.log(directors)
+  return directors;
+  
 }
-
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, director) {
  
@@ -56,3 +59,9 @@ if (typeof module !== 'undefined') {
     bestFilmOfYear,
   };
 }
+
+
+
+
+//Llamar a funciones
+getAllDirectors(movies)
