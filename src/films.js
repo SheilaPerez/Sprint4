@@ -17,24 +17,27 @@ function getMoviesFromDirector(movies, director) {
 
 // Exercise 3: Calculate the average of the films of a given director.
 function moviesAverageOfDirector(movies, director) {
-  let sumaScore = movies.reduce((contador, movie) => {
+  let sumaScore = movies.reduce((count, movie) => {
     if (movie.director == director) {
-      return contador + movie.score;
+      return count + movie.score;
     } else {
-      return contador;
+      return count;
     }
   }, 0);
   return sumaScore / getMoviesFromDirector(movies, director).length;
 }
 
 // Exercise 4:  Alphabetic order by title 
-function orderAlphabetically(array) {
-  
+function orderAlphabetically(movies) {
+  let titleMovies = movies.map((movie) => movie.title);
+  let orderAlphabet = titleMovies.sort();
+  return orderAlphabet.slice(0, 20);
 }
 
 // Exercise 5: Order by year, ascending
 function orderByYear() {
 
+  
 }
 
 // Exercise 6: Calculate the average of the movies in a category
@@ -76,3 +79,5 @@ if (typeof module !== 'undefined') {
 getAllDirectors(movies)
 console.log("peliculas", getMoviesFromDirector(movies, movies[7].director))
 console.log("score", moviesAverageOfDirector(movies, movies[7].director))
+console.log("en orden", orderAlphabetically(movies))
+console.log("orden año", orderByYear(movies))
