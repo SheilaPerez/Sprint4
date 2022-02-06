@@ -36,7 +36,7 @@ function orderAlphabetically(movies) {
 
 // Exercise 5: Order by year, ascending
 function orderByYear(movies) {
-  return movies.sort((movieA, movieB) => {
+  return [...movies].sort((movieA, movieB) => {
     if (movieA.year == movieB.year) {
       if (movieA.title > movieB.title) {
         return 1;
@@ -50,9 +50,22 @@ function orderByYear(movies) {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
+function moviesAverageByCategory(movies, genre) {
+  let genreMovies = movies.filter((movie) => {
+    let someGen = movie.genre.some((movieGenre) => { return movieGenre == genre })
+    return someGen;
+  });
+
+  return genreMovies.reduce((count, movie) => {  
+    if (movie.score == '') {
+        return count
+      } else {
+        return movie.score + count
+      }   
+  },0 ) / genreMovies.length
 
 }
+
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {
@@ -85,8 +98,13 @@ if (typeof module !== 'undefined') {
 
 
 //Llamar a funciones
-getAllDirectors(movies)
-console.log("peliculas", getMoviesFromDirector(movies, movies[7].director))
+/*getAllDirectors(movies)
+console.log("director peliculas", getMoviesFromDirector(movies, movies[7].director))
 console.log("score", moviesAverageOfDirector(movies, movies[7].director))
 console.log("en orden", orderAlphabetically(movies))
 console.log("orden año", orderByYear(movies))
+
+*/
+//console.log("genero", moviesAverageByCategory(movies, movies[1].genre[0]))
+
+
