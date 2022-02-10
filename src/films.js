@@ -52,16 +52,11 @@ function orderByYear(movies) {
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory(movies, genre) {
   let genreMovies = movies.filter((movie) => {
-    let someGen = movie.genre.some((movieGenre) => { return movieGenre == genre })
-    return someGen;
+    return movie.genre.includes(genre) && movie.score != ''
   });
 
   return genreMovies.reduce((count, movie) => {  
-    if (movie.score == '') {
-        return count
-      } else {
-        return movie.score + count
-      }   
+    return movie.score + count
   },0 ) / genreMovies.length
 
 }
